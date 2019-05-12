@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Angular JS</title>
+  <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+  <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="jsbin">
+  <div ng-controller="DemoCtrl as vm">
+
+  	<h1 style="text-align: center;">Weather Report of {{vm.data.name}}</h1>
+  	<!-- <pre>
+  		{{vm.data | prettyJSON}}	
+  	</pre> -->
+
+<div class="col-md-4"> 
+	<ul ng-repeat="(x,y) in vm.data.sys">
+  		<li>
+  			<h4>{{x}} : </h4>
+  			<h4>{{y}}</h4>
+  		</li>
+  	</ul>
+</div>
+  	
+<div class="col-md-4">
+	<ul ng-repeat="(x,y) in vm.data.main">
+  		<li>
+  			<h4>{{x}} : </h4>
+  			<h4>{{y}}</h4>
+  		</li>
+  	</ul>
+</div>
+
+<div class="col-md-4">
+  	<pre>
+  		{{vm.data.weather | prettyJSON}}	
+  	</pre>
+</div>
+  	
+  </div>
+</body>
+
+<!-- <script type="text/javascript">
+	var app = angular.module('jsbin', []);
+
+app.controller('DemoCtrl', function($http) {
+  
+  var vm = this;
+  
+  var URL = 'http://api.openweathermap.org/data/2.5/weather';
+  
+  var request = {
+    method: 'GET',
+    url: URL,
+    params: {
+       q: 'Bengaluru',
+      mode: 'json',
+      units: 'imperial',
+      cnt: '7',
+      appid: 'aa181b0c5b6d5d06956833194391d264'
+    }
+  };
+  
+  $http(request)
+    .then(function(response) {
+      vm.data = response.data;
+    }).
+    catch(function(response) {
+      vm.data = response.data;
+    });
+});
+</script> -->
+</html>
